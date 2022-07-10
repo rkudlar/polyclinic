@@ -1,0 +1,8 @@
+<div class="container">
+  <%= form_for :category, url: admins_categories_path do |f| %>
+    <div class="is-size-4 content page-edit">
+      <p>Назва&nbsp;категорії:&nbsp;<%= f.text_field :name, class: "input" %></p>
+      <p><%= f.submit value: "Зберегти", class: 'button is-fullwidth mt-3' %></p>
+    </div>
+  <% end %>
+</div>

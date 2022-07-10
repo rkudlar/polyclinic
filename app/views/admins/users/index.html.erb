@@ -1,0 +1,22 @@
+<div class="container">
+  <table class="table is-hoverable is-fullwidth">
+    <thead>
+    <tr>
+      <th>Ім'я</th>
+      <th>Прізвище</th>
+      <th>Номер телефону</th>
+      <th>Дія</th>
+    </tr>
+    </thead>
+      <% @users.each do |user| %>
+        <tbody>
+          <tr>
+            <th><%= user.name %></th>
+            <th><%= user.surname %></th>
+            <th><%= user.phone_number %></th>
+            <th><%= link_to 'Видалити', admins_user_path(user), method: :delete %></th>
+          </tr>
+        </tbody>
+    <% end %>
+  </table>
+</div>

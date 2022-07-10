@@ -1,0 +1,15 @@
+<div class="container">
+  <%= form_for :category, url: admins_category_path, method: :patch do |f| %>
+    <div class="is-size-4 content page-edit">
+      <p>Назва&nbsp;категорії:&nbsp;<%= f.text_field :name, class: "input" %></p>
+      <div class="columns">
+        <div class="column">
+          <p><%= f.submit value: "Зберегти", class: 'button is-fullwidth mt-3' %></p>
+        </div>
+        <div class="column">
+          <p><%= link_to 'Видалити', admins_category_path, method: :delete, class: 'button is-fullwidth mt-3' %></p>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>

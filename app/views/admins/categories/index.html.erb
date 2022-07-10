@@ -1,0 +1,21 @@
+<div class="container">
+  <table class="table is-hoverable is-fullwidth">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Категорія</th>
+        <th><%= link_to 'Створити', new_admins_category_path %></th>
+      </tr>
+    </thead>
+      <% @categories.each do |category| %>
+        <tbody>
+          <tr>
+            <th><%= category.id %></th>
+            <th><%= category.name %></th>
+            <th><%= link_to 'Редагувати', edit_admins_category_path(category), class: "mr-4" %>
+            <%= link_to 'Видалити', admins_category_path(category), method: :delete %></th>
+          </tr>
+        </tbody>
+      <% end %>
+  </table>
+</div>

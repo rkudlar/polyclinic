@@ -1,0 +1,46 @@
+<div class="container">
+  <div class="columns is-multiline is-mobile">
+    <% @doctors.each do |doctor| %>
+      <div class="column is-4 mb-3">
+        <div class="box box-b my-0 has-text-centered">
+          <p class="title">
+            <%= doctor.name %>
+            <%= doctor.surname %>
+          </p>
+          <p class="subtitle">
+            <%= doctor.category.name %>
+          </p>
+        </div>
+        <div class="box box-t my-0 has-background-light has-text-centered">
+          <figure class="image is-4by5">
+            <img src="<%= url_for(doctor.avatar_picture) %>" alt="image">
+          </figure>
+          <p class="subtitle mt-4">
+            <%= doctor.phone_number %>
+          </p>
+          <%= link_to 'Змінити', edit_admins_doctor_path(doctor),
+                      class: 'button is-fullwidth mt-3' %>
+        </div>
+      </div>
+    <% end %>
+    <div class="column is-4 mb-3">
+      <div class="box box-b my-0 has-text-centered">
+        <p class="title">
+          Ім'я Прізвище
+        </p>
+        <p class="subtitle">
+          Категорія
+        </p>
+      </div>
+      <div class="box box-t my-0 has-background-light has-text-centered">
+        <figure class="image is-4by5">
+        </figure>
+        <p class="subtitle mt-4">
+          +380XXXXXXXXX
+        </p>
+        <%= link_to 'Додати', new_admins_doctor_path,
+                    class: 'button is-fullwidth mt-3' %>
+      </div>
+    </div>
+  </div>
+</div>
