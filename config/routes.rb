@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   devise_for :users
 
   root 'home#index'
+  resources :records, only: [:index, :show, :new, :edit, :update]
 
   namespace :admins do
     get '/', to: 'admin#index'
