@@ -8,6 +8,8 @@ class Doctor < ApplicationRecord
 
   validates :phone_number, uniqueness: true, presence: true
   validates :avatar_picture, content_type: %i[png jpg jpeg], attached: true
+  validates :name, presence: true
+  validates :surname, presence: true
 
   def email_required?
     false
