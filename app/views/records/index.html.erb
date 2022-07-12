@@ -10,19 +10,21 @@
       </tr>
       </thead>
       <% @records.each do |record| %>
-        <tbody>
-        <tr>
-          <th><%= record.user.name %> <%= record.user.surname %></th>
-          <th><%= record.user.phone_number %></th>
-          <% if record.status %>
-            <th><%= link_to 'Написати', edit_record_path(record), class: "mr-4" %></th>
-            <th>Активний</th>
-            <% else %>
-            <th><%= link_to 'Написати', edit_record_path(record), style: 'pointer-events: none;', class: "mr-4" %></th>
-            <th>Закритий</th>
-          <% end %>
-        </tr>
-        </tbody>
+        <% if can? :read, record %>
+          <tbody>
+            <tr>
+              <th><%= record.user.name %> <%= record.user.surname %></th>
+              <th><%= record.user.phone_number %></th>
+              <% if record.status %>
+                <th><%= link_to 'Написати', edit_record_path(record), class: "mr-4" %></th>
+                <th>Активний</th>
+                <% else %>
+                <th><%= link_to 'Переглянути', record_path(record), class: "mr-4" %></th>
+                <th>Закритий</th>
+              <% end %>
+            </tr>
+          </tbody>
+        <% end %>
       <% end %>
     </table>
   <% end %>
@@ -39,19 +41,21 @@
       </tr>
       </thead>
       <% @records.each do |record| %>
-        <tbody>
-        <tr>
-          <th><%= record.doctor.name %> <%= record.doctor.surname %></th>
-          <th><%= record.doctor.category.name %></th>
-          <th><%= record.doctor.phone_number %></th>
-          <th><%= link_to 'Переглянути', record_path(record), class: "mr-4" %></th>
-          <% if record.status %>
-            <th>Активний</th>
-          <% else %>
-            <th>Закритий</th>
-          <% end %>
-        </tr>
-        </tbody>
+        <% if can? :read, record %>
+          <tbody>
+          <tr>
+            <th><%= record.doctor.name %> <%= record.doctor.surname %></th>
+            <th><%= record.doctor.category.name %></th>
+            <th><%= record.doctor.phone_number %></th>
+            <th><%= link_to 'Переглянути', record_path(record), class: "mr-4" %></th>
+            <% if record.status %>
+              <th>Активний</th>
+            <% else %>
+              <th>Закритий</th>
+            <% end %>
+          </tr>
+          </tbody>
+        <% end %>
       <% end %>
     </table>
   <% end %>

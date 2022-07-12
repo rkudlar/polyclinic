@@ -1,4 +1,6 @@
 class RecordsController < ApplicationController
+  load_and_authorize_resource
+
   def index
     @records = RecordsService.new(params).call
   end
