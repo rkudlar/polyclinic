@@ -1,5 +1,10 @@
 require 'rails_helper'
 
 RSpec.describe Doctor, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  let(:doctor) { create(:doctor) }
+
+  it { expect(doctor).to be_valid }
+
+  it { should validate_presence_of(:phone_number) }
+  it { should validate_uniqueness_of(:phone_number).case_insensitive }
 end
