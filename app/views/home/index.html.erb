@@ -19,8 +19,10 @@
             <%= doctor.phone_number %>
           </p>
           <% if user_signed_in? %>
-            <% unless Record.where(doctor_id: doctor.id, user_id: current_user.id, status: 1).blank? %>
+            <% if !Record.where(doctor_id: doctor.id, user_id: current_user.id, status: 1).empty? %>
               <p>Ви вже записані</p>
+            <% elsif doctor.records.where(status: true).size >= 10 %>
+              <p>У лікаря максимальна кількість записів</p>
             <% else %>
             <%= link_to 'Записатися', new_record_path(record: { doctor_id: doctor.id, user_id: current_user.id }),
                         class: 'button is-fullwidth mt-3' %>

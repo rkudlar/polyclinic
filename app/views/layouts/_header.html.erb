@@ -13,14 +13,19 @@
 
   <div id="navbarBasicExample" class="navbar-menu">
     <div class="navbar-start">
-      <a class="navbar-item">
-        Doctors
-      </a>
-
-      <a class="navbar-item">
-        Documentation
-      </a>
-
+      <div class="buttons">
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link">
+            Лікарі
+          </a>
+          <div class="navbar-dropdown">
+            <%= link_to "Всі", root_path, class: "navbar-item" %>
+            <% Category.all.each do |category| %>
+              <%= link_to "#{category.name}", root_path(category_id: category.id), class: "navbar-item" %>
+            <% end %>
+          </div>
+        </div>
+      </div>
     </div>
 
     <div class="navbar-end">

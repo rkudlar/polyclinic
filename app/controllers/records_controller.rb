@@ -11,7 +11,9 @@ class RecordsController < ApplicationController
 
   def new
     @record = Record.new(record_params)
-    if @record.save
+    if @record.doctor.records.where(status: true).size < 10 && Record.where(doctor_id: @record.doctor.id,
+                                                                            user_id: current_user.id,
+                                                                            status: 1).empty? && @record.save
       flash[:success] = 'Created!'
     else
       flash[:danger] = 'Incorrect!'

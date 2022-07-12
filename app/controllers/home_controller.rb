@@ -1,5 +1,5 @@
 class HomeController < ApplicationController
   def index
-    @doctors = Doctor.all
+    @doctors = DoctorsService.new(params).call
   end
 end

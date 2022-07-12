@@ -1,6 +1,6 @@
 class User < ApplicationRecord
   has_many :records
-  has_many :doctors, through: :records
+  has_many :doctors, through: :records, dependent: :destroy
 
   devise :database_authenticatable, :registerable, :recoverable, :rememberable, :validatable
 
