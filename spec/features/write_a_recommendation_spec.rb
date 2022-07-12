@@ -7,7 +7,7 @@ RSpec.feature 'Write a recommendation', type: :feature do
   let(:user) { create(:user) }
   let(:record) { create(:record, doctor_id: 1) }
 
-  scenario '1' do
+  scenario 'log in as a doctor and leave a recommendation for a patient' do
     visit new_doctor_session_path
     within('#new_doctor') do
       fill_in 'doctor_phone_number', with: doctor.phone_number
