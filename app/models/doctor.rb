@@ -4,7 +4,7 @@ class Doctor < ApplicationRecord
   has_many :records
   has_many :user, through: :records, dependent: :destroy
 
-  devise :database_authenticatable, :registerable, :recoverable, :rememberable, :validatable
+  devise :database_authenticatable, :recoverable, :rememberable, :validatable
 
   validates :phone_number, uniqueness: true, presence: true
   validates :avatar_picture, content_type: %i[png jpg jpeg], attached: true
