@@ -1,11 +1,10 @@
 require 'rails_helper'
-require 'pry'
 
 RSpec.feature 'Write a recommendation', type: :feature do
   let(:category) { create(:category) }
   let(:doctor) { create(:doctor) }
   let(:user) { create(:user) }
-  let(:record) { create(:record, doctor_id: 1) }
+  let(:record) { create(:record, user_id: user.id, doctor_id: doctor.id) }
 
   scenario 'log in as a doctor and leave a recommendation for a patient' do
     visit new_doctor_session_path
