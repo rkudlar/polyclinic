@@ -1,6 +1,8 @@
 class Doctor < ApplicationRecord
   has_one_attached :avatar_picture
   belongs_to :category
+  has_many :records
+  has_many :user, through: :records, dependent: :destroy
 
   devise :database_authenticatable, :registerable, :recoverable, :rememberable, :validatable
 

@@ -1,0 +1,21 @@
+<div class="container">
+  <div class="box box-b my-0 has-text-centered">
+    <p class="title">
+      <%= @record.doctor.name %>
+      <%= @record.doctor.surname %>
+    </p>
+    <p class="subtitle">
+      <%= @record.doctor.category.name %>
+    </p>
+  </div>
+  <div class="box box-t box-b my-0 has-background-light">
+    <figure style="width: 300px" class="image has-text-centered mx-auto">
+      <img src="<%= url_for(@record.doctor.avatar_picture) %>" alt="image">
+    </figure>
+  </div>
+  <div class="box box-t my-0 has-background-white-bis">
+    <div class="content is-size-4">
+      <p><strong>Рекомендація:</strong> <%= @record.recommendation %></p>
+    </div>
+  </div>
+</div>

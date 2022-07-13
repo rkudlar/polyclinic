@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_07_10_084054) do
+ActiveRecord::Schema.define(version: 2022_07_10_174428) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -71,6 +71,17 @@ ActiveRecord::Schema.define(version: 2022_07_10_084054) do
     t.string "surname"
     t.index ["phone_number"], name: "index_doctors_on_phone_number", unique: true
     t.index ["reset_password_token"], name: "index_doctors_on_reset_password_token", unique: true
+  end
+
+  create_table "records", force: :cascade do |t|
+    t.integer "doctor_id"
+    t.integer "user_id"
+    t.string "recommendation"
+    t.boolean "status", default: true
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["doctor_id"], name: "index_records_on_doctor_id"
+    t.index ["user_id"], name: "index_records_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
