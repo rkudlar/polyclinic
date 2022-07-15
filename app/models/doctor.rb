@@ -11,15 +11,13 @@ class Doctor < ApplicationRecord
   validates :name, presence: true
   validates :surname, presence: true
 
-  def email_required?
-    false
+  include DeviseHelper
+
+  def count_active_records
+    records.status.size
   end
 
-  def email_changed?
-    false
-  end
-
-  def will_save_change_to_email?
-    false
+  def category_name
+    category.name
   end
 end

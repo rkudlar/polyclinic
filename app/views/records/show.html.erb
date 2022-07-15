@@ -1,16 +1,16 @@
 <div class="container">
   <div class="box box-b my-0 has-text-centered">
     <p class="title">
-      <%= @record.doctor.name %>
-      <%= @record.doctor.surname %>
+      <%= @record.doctor_name %>
+      <%= @record.doctor_surname %>
     </p>
     <p class="subtitle">
-      <%= @record.doctor.category.name %>
+      <%= @record.doctor_category %>
     </p>
   </div>
   <div class="box box-t box-b my-0 has-background-light">
     <figure style="width: 300px" class="image has-text-centered mx-auto">
-      <img src="<%= url_for(@record.doctor.avatar_picture) %>" alt="image">
+      <img src="<%= url_for(@record.doctor_avatar) %>" alt="image">
     </figure>
   </div>
   <div class="box box-t my-0 has-background-white-bis">

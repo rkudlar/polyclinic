@@ -1,6 +1,6 @@
 class DoctorsService
   def initialize(params)
-    @category_id = params[:category_id]
+    @category_id = params
   end
 
   def call

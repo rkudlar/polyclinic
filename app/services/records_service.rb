@@ -1,6 +1,6 @@
 class RecordsService
   def initialize(params)
-    @status = params[:status]
+    @status = params
   end
 
   def call

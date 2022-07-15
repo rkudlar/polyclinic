@@ -8,7 +8,7 @@
             <%= doctor.surname %>
           </p>
           <p class="subtitle">
-            <%= doctor.category.name %>
+            <%= doctor.category_name %>
           </p>
         </div>
         <div class="box box-t my-0 has-background-light has-text-centered">
@@ -19,13 +19,13 @@
             <%= doctor.phone_number %>
           </p>
           <% if user_signed_in? %>
-            <% if !Record.where(doctor_id: doctor.id, user_id: current_user.id, status: 1).empty? %>
+            <% if !Record.where(doctor_id: doctor.id, user_id: current_user.id, status: true).empty? %>
               <p>Ви вже записані</p>
-            <% elsif doctor.records.where(status: true).size >= 10 %>
+            <% elsif doctor.count_active_records >= 10 %>
               <p>У лікаря максимальна кількість записів</p>
             <% else %>
-            <%= link_to 'Записатися', new_record_path(record: { doctor_id: doctor.id, user_id: current_user.id }),
-                        class: 'button is-fullwidth mt-3' %>
+            <%= link_to 'Записатися', records_path(record: { doctor_id: doctor.id, user_id: current_user.id }),
+                        method: :post, class: 'button is-fullwidth mt-3' %>
             <% end %>
           <% else %>
             <p>Увійдіть щоб записатися</p>

@@ -39,8 +39,8 @@
               </a>
               <div class="navbar-dropdown">
                 <%= link_to "Всі", records_path, class: "navbar-item" %>
-                <%= link_to "Активні", records_path(status: 1), class: "navbar-item" %>
-                <%= link_to "Закриті", records_path(status: 0), class: "navbar-item" %>
+                <%= link_to "Активні", records_path(status: true), class: "navbar-item" %>
+                <%= link_to "Закриті", records_path(status: false), class: "navbar-item" %>
               </div>
             </div>
             <%= link_to "Вийти", destroy_user_session_path, method: :delete, class: "button is-primary"%>
@@ -53,8 +53,8 @@
               </a>
               <div class="navbar-dropdown">
                 <%= link_to "Всі", records_path, class: "navbar-item" %>
-                <%= link_to "Активні", records_path(status: 1), class: "navbar-item" %>
-                <%= link_to "Закриті", records_path(status: 0), class: "navbar-item" %>
+                <%= link_to "Активні", records_path(status: true), class: "navbar-item" %>
+                <%= link_to "Закриті", records_path(status: false), class: "navbar-item" %>
               </div>
             </div>
             <%= link_to "Вийти", destroy_doctor_session_path, method: :delete, class: "button is-primary"%>

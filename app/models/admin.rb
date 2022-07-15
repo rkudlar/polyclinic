@@ -5,15 +5,5 @@ class Admin < ApplicationRecord
 
   validates :phone_number, uniqueness: true, presence: true
 
-  def email_required?
-    false
-  end
-
-  def email_changed?
-    false
-  end
-
-  def will_save_change_to_email?
-    false
-  end
+  include DeviseHelper
 end

@@ -2,22 +2,16 @@ class RecordsController < ApplicationController
   load_and_authorize_resource
 
   def index
-    @records = RecordsService.new(params).call
+    @records = RecordsService.new(params[:status]).call
   end
 
   def show
     record
   end
 
-  def new
+  def create
     @record = Record.new(record_params)
-    if @record.doctor.records.where(status: true).size < 10 && Record.where(doctor_id: @record.doctor.id,
-                                                                            user_id: current_user.id,
-                                                                            status: 1).empty? && @record.save
-      flash[:success] = 'Created!'
-    else
-      flash[:danger] = 'Incorrect!'
-    end
+    check_if_valid_record? && @record.save ? flash[:success] = 'Created!' : flash[:danger] = 'Incorrect!'
     redirect_to root_path
   end
 
@@ -26,8 +20,7 @@ class RecordsController < ApplicationController
   end
 
   def update
-    if record.update(record_params)
-      record.update(status: false)
+    if record.update(record_params.merge(status: false))
       flash[:success] = 'Updated!'
       redirect_to records_path
     else
@@ -44,5 +37,12 @@ class RecordsController < ApplicationController
 
   def record
     @record = Record.find(params[:id])
+  end
+
+  def check_if_valid_record?
+    return false unless @record.count_active_doctor_records < 10 &&
+                        Record.where(doctor_id: @record.doctor_id, user_id: current_user.id, status: true).empty?
+
+    true
   end
 end
