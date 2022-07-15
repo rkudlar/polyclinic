@@ -8,15 +8,5 @@ class User < ApplicationRecord
   validates :name, presence: true
   validates :surname, presence: true
 
-  def email_required?
-    false
-  end
-
-  def email_changed?
-    false
-  end
-
-  def will_save_change_to_email?
-    false
-  end
+  include DeviseHelper
 end

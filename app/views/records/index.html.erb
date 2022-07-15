@@ -13,8 +13,8 @@
         <% if can? :read, record %>
           <tbody>
             <tr>
-              <th><%= record.user.name %> <%= record.user.surname %></th>
-              <th><%= record.user.phone_number %></th>
+              <th><%= record.user_name %> <%= record.user_surname %></th>
+              <th><%= record.user_phone %></th>
               <% if record.status %>
                 <th><%= link_to 'Написати', edit_record_path(record), class: "mr-4" %></th>
                 <th>Активний</th>
@@ -44,9 +44,9 @@
         <% if can? :read, record %>
           <tbody>
           <tr>
-            <th><%= record.doctor.name %> <%= record.doctor.surname %></th>
-            <th><%= record.doctor.category.name %></th>
-            <th><%= record.doctor.phone_number %></th>
+            <th><%= record.doctor_name %> <%= record.doctor_surname %></th>
+            <th><%= record.doctor_category %></th>
+            <th><%= record.doctor_phone %></th>
             <th><%= link_to 'Переглянути', record_path(record), class: "mr-4" %></th>
             <% if record.status %>
               <th>Активний</th>
