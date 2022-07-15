@@ -1,0 +1,10 @@
+<div class="navbar-item has-dropdown is-hoverable">
+  <a class="navbar-link button is-light">
+    Записи
+  </a>
+  <div class="navbar-dropdown">
+    <%= link_to "Всі", records_path, class: "navbar-item" %>
+    <%= link_to "Активні", records_path(status: true), class: "navbar-item" %>
+    <%= link_to "Закриті", records_path(status: false), class: "navbar-item" %>
+  </div>
+</div>

@@ -31,32 +31,13 @@
     <div class="navbar-end">
       <div class="navbar-item">
         <% if user_signed_in? %>
-
           <div class="buttons">
-            <div class="navbar-item has-dropdown is-hoverable">
-              <a class="navbar-link button is-light">
-                Записи
-              </a>
-              <div class="navbar-dropdown">
-                <%= link_to "Всі", records_path, class: "navbar-item" %>
-                <%= link_to "Активні", records_path(status: true), class: "navbar-item" %>
-                <%= link_to "Закриті", records_path(status: false), class: "navbar-item" %>
-              </div>
-            </div>
+            <%= render 'layouts/header_record' %>
             <%= link_to "Вийти", destroy_user_session_path, method: :delete, class: "button is-primary"%>
           </div>
         <% elsif doctor_signed_in? %>
           <div class="buttons">
-            <div class="navbar-item has-dropdown is-hoverable">
-              <a class="navbar-link button is-light">
-                Записи
-              </a>
-              <div class="navbar-dropdown">
-                <%= link_to "Всі", records_path, class: "navbar-item" %>
-                <%= link_to "Активні", records_path(status: true), class: "navbar-item" %>
-                <%= link_to "Закриті", records_path(status: false), class: "navbar-item" %>
-              </div>
-            </div>
+            <%= render 'layouts/header_record' %>
             <%= link_to "Вийти", destroy_doctor_session_path, method: :delete, class: "button is-primary"%>
           </div>
         <% else %>
